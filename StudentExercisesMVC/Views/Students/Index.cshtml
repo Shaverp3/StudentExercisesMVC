@@ -1,0 +1,66 @@
+﻿@model IEnumerable<StudentExercisesMVC.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@*Things I changed:
+    - Added dark mode to my table
+    - Changed the links for edit, details, and delete to badges instead of straight up a tags *@
+
+<h1>Students</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-striped table-dark table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SlackHandle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cohort)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var singleStudent in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => singleStudent.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => singleStudent.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => singleStudent.SlackHandle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => singleStudent.Cohort.Name)
+                </td>
+                <td>
+                    <div class="badge badge-pill badge-success">
+                        @Html.ActionLink("Edit", "Edit", new { id = singleStudent.Id }, new { @class = "badgeClass" })
+                    </div>
+
+                    <div class="badge badge-pill badge-primary">
+                        @Html.ActionLink("Details", "Details", new { id = singleStudent.Id }, new { @class = "badgeClass" })
+                    </div>
+
+                    <div class="badge badge-pill badge-danger">
+                        @Html.ActionLink("Delete", "Delete", new { id = singleStudent.Id }, new { @class = "badgeClass" })
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

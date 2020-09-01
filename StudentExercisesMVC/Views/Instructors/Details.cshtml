@@ -1,0 +1,17 @@
+﻿@model StudentExercisesMVC.Models.Instructor
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="border-info">
+    <h2> @Model.FirstName @Model.LastName</h2>
+    <p>@Html.DisplayNameFor(model => model.SlackHandle) : @Model.SlackHandle</p>
+    <p>@Html.DisplayNameFor(model => model.Cohort) : @Model.Cohort.Name</p>
+</div>
+    <div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    <a asp-action="Index">Back to List</a>
+    </div>

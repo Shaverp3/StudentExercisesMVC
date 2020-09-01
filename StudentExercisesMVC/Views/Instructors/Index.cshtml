@@ -1,0 +1,68 @@
+﻿@model IEnumerable<StudentExercisesMVC.Models.Instructor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-striped table-dark table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SlackHandle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Specialty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CohortId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var singleInstructor in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => singleInstructor.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => singleInstructor.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => singleInstructor.SlackHandle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => singleInstructor.Specialty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => singleInstructor.CohortId)
+                </td>
+                <td>
+                    <div class="badge badge-pill badge-success">
+                        @Html.ActionLink("Edit", "Edit", new { id = singleInstructor.Id }, new { @class = "badgeClass" })
+                    </div>
+
+                    <div class="badge badge-pill badge-primary">
+                        @Html.ActionLink("Details", "Details", new { id = singleInstructor.Id }, new { @class = "badgeClass" })
+                    </div>
+
+                    <div class="badge badge-pill badge-danger">
+                        @Html.ActionLink("Delete", "Delete", new { id = singleInstructor.Id }, new { @class = "badgeClass" })
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

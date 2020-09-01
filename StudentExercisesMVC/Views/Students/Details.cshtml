@@ -1,0 +1,50 @@
+﻿@model StudentExercisesMVC.Models.Student
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+@*Things I changed
+    - the html mark up
+    - stopped showing their id, becasue who cares*@
+
+
+<div class="border-info">
+    <h2> @Model.FirstName @Model.LastName</h2>
+    <p>@Html.DisplayNameFor(model => model.SlackHandle) : @Model.SlackHandle</p>
+    <p>@Html.DisplayNameFor(model => model.Cohort) : @Model.Cohort.Name</p>
+    <h6> Assigned Exercises: </h6>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Exercise
+                </th>
+                <th>
+                    Language
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var singleExercise in Model.AssignedExercises)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => singleExercise.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => singleExercise.Language)
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        <a asp-action="Index">Back to List</a>
+    </div>
+ 
